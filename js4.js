@@ -126,16 +126,62 @@ function mix(str1, str2) {
                     if(res1.includes(res3[i])){
                         
                         res4.push(`1:${res3[i]}`);
+                        if(i==(res3.length-3)){
+                        
+                        i=(res3.length-1);
+                        if(res1.includes(res3[i])){
+                            res4.push(`1:${res3[i]}`);
+                        }
+                        if(res2.includes(res3[i])){
+                            res4.push(`2:${res3[i]}`);
+                        }
+                        
+                        break;
+      
+                    }
+    
+                    else{
+    
+                        
                         i++;
                         j++;
                         break;
+                       
+    
+    
+                    }
+
+
                     }
                     else{
                         if(res2.includes(res3[i])){
                             res4.push(`2:${res3[i]}`);
-                            i++;
-                            j++;
-                            break;
+
+                        if(i==(res3.length-3)){
+                        
+                        i=(res3.length-1);
+                        if(res1.includes(res3[i])){
+                            res4.push(`1:${res3[i]}`);
+                        }
+                        if(res2.includes(res3[i])){
+                            res4.push(`2:${res3[i]}`);
+                        }
+                        
+                        break;
+      
+                    }
+    
+                    else{
+    
+                        
+                        i++;
+                        j++;
+                        break;
+                       
+    
+    
+                    }
+
                             
                         }
                     }
@@ -145,16 +191,64 @@ function mix(str1, str2) {
                     if(res1.includes(res3[z])){
                         
                         res4.push(`1:${res3[z]}`);
+
+                        if(i==(res3.length-3)){
+                        
+                        i=(res3.length-1);
+                        if(res1.includes(res3[i])){
+                            res4.push(`1:${res3[i]}`);
+                        }
+                        if(res2.includes(res3[i])){
+                            res4.push(`2:${res3[i]}`);
+                        }
+                        
+                        break;
+      
+                    }
+    
+                    else{
+    
+                        
                         i++;
                         j++;
                         break;
+                       
+    
+    
+                    }
+
+
                     }
                     else{
                         if(res2.includes(res3[z])){
                             res4.push(`2:${res3[z]}`);
-                            i++;
-                            j++;
-                            break;
+
+                        if(i==(res3.length-3)){
+                        
+                        i=(res3.length-1);
+                        if(res1.includes(res3[i])){
+                            res4.push(`1:${res3[i]}`);
+                        }
+                        if(res2.includes(res3[i])){
+                            res4.push(`2:${res3[i]}`);
+                        }
+                        
+                        break;
+      
+                    }
+    
+                    else{
+    
+                        
+                        i++;
+                        j++;
+                        break;
+                       
+    
+    
+                    }
+
+
                             
                         }
                     }
@@ -225,14 +319,25 @@ function mix(str1, str2) {
     
     let res6 = res4.concat(res5);
     res6.sort(function(a,b){return (b.length)-(a.length)})
-    let res = res6.toString().replaceAll(",","/");
+    let res7 = [];
     
-    console.log("res1---",res1);
-    console.log("res2---",res2);
-    console.log("res3---",res3);
-    console.log("res4---",res4);
-    console.log("res5---",res5);
+    function isNumber(char) {
+        return /^\d$/.test(char);
+        }
+    
+
+
+
+
+
+    let res = res6.toString().replaceAll(",","/");
+    // console.log("res1---",res1);
+    // console.log("res2---",res2);
+    // console.log("res3---",res3);
+    // console.log("res4---",res4);
+    // console.log("res5---",res5);
     console.log("res6---",res6);
+    console.log("res7---",res7);
     console.log("res---",res);
     // console.log("1:aaa/1:nnn/1:gg/2:ee/2:ff/2:ii/2:oo/2:rr/2:ss/2:tt")
     return res;
@@ -240,18 +345,36 @@ function mix(str1, str2) {
 
 
 //   mix(" In many languages", " there's a pair of functions");
-  mix("looping is fun but dangerous", "less dangerous than coding")
 
 
 
+
+// first check if the length is the same if YES then check if both have number if YES then arrange it accordingly
+// if length is not the same then move the the next consequtive number.
+// if both dont have number increment accordingly
+
+
+// mix("my&friend&Paul has heavy hats! &", "my friend John has many many friends &")
+//2:nnnnn/1:aaaa/1:hhh/2:mmm/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss
+//2:nnnnn/1:aaaa/1:hhh/2:mmm/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss --ok
+
+//mix("mmmmm m nnnnn y&friend&Paul has heavy hats! &", "my frie n d Joh n has ma n y ma n y frie n ds n&")
+//1:mmmmmm/=:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss
+//1:mmmmmm/=:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss --ok
+
+//mix("Are the kids at home? aaaaa fffff", "Yes they are here! aaaaa fffff")
 //=:aaaaaa/2:eeeee/=:fffff/1:tt/2:rr/=:hh
-//=:aaaaaa/2:eeeee/=:fffff/2:rr/1:tt/=:hh
+//=:aaaaaa/2:eeeee/=:fffff/1:tt/2:rr/=:hh --notok
 
 
 
 
+// THIS THE ONE
+mix("looping is fun but dangerous", "less dangerous than coding")
 //1:ooo/1:uuu/2:sss/=:nnn/1:ii/2:aa/2:dd/2:ee/=:gg
-//1:ooo/2:sss/=:nnn/2:aa/2:dd/2:ee/1:ii/=:gg
+//1:ooo/2:sss/1:uuu/=:nnn/2:aa/2:dd/2:ee/1:ii/=:gg
+
+
 
 //1:aaa/1:nnn/1:gg/2:ee/2:ff/2:ii/2:oo/2:rr/2:ss/2:tt
 //1:aaa/1:nnn/2:ee/2:ff/1:gg/2:ii/2:oo/2:rr/2:ss/1:tt
